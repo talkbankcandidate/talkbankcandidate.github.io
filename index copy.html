@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  background-color: #f1f1f1;
+  font-family: Raleway;
+}
+.main{
+  display: flex;
+  justify-content: space-between;
+}
+
+.title{
+  width: 50%;
+}
+.title img{
+  display: block;
+  margin: 2% auto;
+  width: 30%;
+}
+.title h1{
+  margin-top: 40vh;
+  text-align: center;
+  color: #149b9e;
+  font-size: 24px;
+}
+.title p{
+  text-align: center;
+  color: #a34081;
+  font-size: 18px;
+}
+.d12 {
+width: 50%; 
+height: 95vh;
+background-image: url(bg.png);
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+  border-radius: 50%;
+  box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+  margin-right: 2%;
+  margin-top: 1%;
+}
+.description {
+  text-align: center;
+  padding: 50px 15% 0px 15%;
+  font-size: 18px;
+  line-height: 33px;
+}
+.description li{
+    text-align: left;
+}
+.description h2{
+  text-align: center;
+  font-size: 20px;
+}
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+/* input[type=range]::before {
+  content: "0";
+}
+input[type=range]::after {
+  content: "11";
+} */
+select {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #149b9e;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+ 
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.progressbar{
+  margin: -40px -40px 0 -40px;
+  display: flex;
+}
+.step {
+  margin: 0;
+  height: 5px;
+  width: calc(100% / 33);
+  background-color: #bbbbbb; 
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #149b9e;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #149b9e;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #149b9e;
+  cursor: pointer;
+}
+.stylespan{
+    background-color: #149b9e;
+    color: #ffffff;
+    border-radius: 20%;
+    padding: 3px;
+    font-size: 24px;
+}
+@media only screen and (max-device-width: 480px) {
+  .main{
+    flex-direction: column;
+  }
+  .title{
+    width: 100%;
+  }
+  .d12{
+    width: 100%;
+    height: 50vh;
+    border-radius: 0%;
+    margin: 0;
+     box-shadow: 0 0.375em 0 0 rgba(15, 28, 63, 0.125);
+  }
+  .title img{
+
+  width: 50%;
+  
+  }
+  .title h1{
+    margin-top: 5vh;
+  }
+  .description {
+  text-align: center;
+  padding: 50px 2px;
+  font-size: 16px;
+  }
+  #regForm {
+  margin: 10px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 100%;
+  min-width: 300px;
+}
+.stylespan{
+    background-color: #149b9e;
+    color: #ffffff;
+    border-radius: 20%;
+    padding: 5px;
+    font-size: 18px;
+}
+button {
+  width:100%;
+  padding: 10px 20px;
+  font-size: 14px;
+
+}
+}
+</style>
+<body>
+<section class="main">
+  <div class="title">
+    <img src="logo.png" alt="">
+    <h1>Мотивационный профиль</h1>
+    <p>Тест Мартина и Ричи</p>
+  </div>
+  <div class="d12">
+
+  </div>
+</section>
+<section class="description">
+    <h2><span class="stylespan"> Немного правил</span></h2>
+    <p>Необходимо распределить по собственному усмотрению <span class="stylespan"> 11 баллов</span> между четырьмя вариантами каждого из
+    утверждений, обозначенными буквами <span class="stylespan">A</span>, <span class="stylespan">B</span>, <span class="stylespan">C</span> и <span class="stylespan">D</span>.</p>
+    <ul>
+    <li>Если вам кажется, что один из вариантов для вас самый важный, его можно оценить во все 11 баллов, но тогда остальные будут для вас вовсе не существенным и не получают ни одного балла;</li> 
+    <li>В остальных случаях постарайтесь по собственному
+    усмотрению распределить все 11 баллов между четырьмя предложенными в каждом
+    утверждении факторами.</li>
+    </ul>
+<h3> Следите за тем, чтобы были присуждены все 11 баллов </h3>
+<h3> Пожалуйста, проходите тест внимательно, но не затягивайте с ответами.</h3>
+<h3> Удачи! </h3>
+</section>
+<section class="forms">
+<form id="regForm" class="g-form">
+  <div class="progressbar">
+    <span class="step finish"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+  <h2 class="g-form__title g-form__title_respond"></h2>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">
+    <h3>Расскажи о себе:</h3>
+    <p><input placeholder="Введи ФИО" oninput="this.className = ''" name="Фио" type="text"></p>
+<p><input placeholder="Введи должность на которую претендуешь" oninput="this.className = ''" name="Должность" type="text"></p>
+  </div>
+<!-- Вопрос 1 -->
+<div class="tab">
+    <h3>Я полагаю, что мог бы внести большой вклад на такой работе, где:</h3>
+    <p><label>а) хорошая заработная плата и прочие виды вознаграждений; <input type="range" min="0" max="11" value="0" name="a1" class="slider" oninput="ar.value=parseInt(a1.value)"/> <output name="ar">0</output></label></p>
+    <p><label>b) имеется возможность установить хорошие взаимоотношения с коллегами по работе; <input type="range" min="0" max="11" value="0" name="b1" class="slider"  oninput="br.value=parseInt(b1.value)"/> <output name="br">0</output></label></p>
+    <p><label>c) я мог бы влиять на принятие решений и демонстрировать свои достоинства как работника;<input type="range" min="0" max="11" value="0" name="c1" class="slider"  oninput="cr.value=parseInt(c1.value)"/><output name="cr">0</output></label></p>
+    <p><label>d) у меня есть возможность совершенствоваться и расти как личность <input type="range" min="0" max="11" value="0" name="d1" class="slider"  oninput="dr.value=parseInt(d1.value)"/><output name="dr">0</output></label></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 2 -->
+  <div class="tab">
+    <h3>Я не хотел бы работать там, где:</h3>
+    <p><label>а)  отсутствуют четкие указания, что от меня требуется; <input type="range" min="0" max="11" value="0" name="a2" class="slider" oninput="a2r.value=parseInt(a2.value)"/></label> <output name="a2r">0</output></p>
+    <p><label>b)  практически отсутствуют обратная связь и оценка эффективности моей работы; <input type="range" min="0" max="11" value="0" name="b2" class="slider" oninput="b2r.value=parseInt(b2.value)"/></label> <output name="b2r">0</output></p>
+    <p><label>c)  то, чем я занимаюсь, выглядит малополезным и малоценным;<input type="range" min="0" max="11" value="0" name="c2" class="slider"oninput="c2r.value=parseInt(c2.value)"/></label><output name="c2r">0</output></p>
+    <p><label>d)  плохие условия работы, слишком шумно или грязно <input type="range" min="0" max="11" value="0" name="d2" class="slider" oninput="d2r.value=parseInt(d2.value)"/></label><output name="d2r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 3 -->
+  <div class="tab">
+    <h3>Для меня важно, чтобы моя работа…</h3>
+    <p><label>а) была связана со значительным разнообразием и переменами; <input type="range" min="0" max="11" value="0" name="a3" class="slider" oninput="a3r.value=parseInt(a3.value)"/></label> <output name="a3r">0</output></p>
+    <p><label>b) давала мне возможность работать с широким кругом людей; <input type="range" min="0" max="11" value="0" name="b3" class="slider" oninput="b3r.value=parseInt(b3.value)"/></label> <output name="b3r">0</output></p>
+    <p><label>c)  обеспечивала мне четкие указания, чтобы я знал, что от меня требуется;<input type="range" min="0" max="11" value="0" name="c3" class="slider"oninput="c3r.value=parseInt(c3.value)"/></label><output name="c3r">0</output></p>
+    <p><label>d)  позволяла мне хорошо узнать тех людей, с которыми я работаю. <input type="range" min="0" max="11" value="0" name="d3" class="slider" oninput="d3r.value=parseInt(d3.value)"/></label><output name="d3r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 4 -->
+  <div class="tab">
+    <h3>Я полагаю, что я не был бы очень заинтересован работой, которая…</h3>
+    <p><label>а) обеспечивала бы мне мало контактов с другими людьми;<input type="range" min="0" max="11" value="0" name="a4" class="slider" oninput="a4r.value=parseInt(a4.value)"/></label> <output name="a4r">0</output></p>
+    <p><label>b) едва ли была бы замечена другими людьми; <input type="range" min="0" max="11" value="0" name="b4" class="slider" oninput="b4r.value=parseInt(b4.value)"/></label> <output name="b4r">0</output></p>
+    <p><label>c)  не имела бы конкретных очертаний, так что я не был бы уверен, что от меня требуется;<input type="range" min="0" max="11" value="0" name="c4" class="slider"oninput="c4r.value=parseInt(c4.value)"/></label><output name="c4r">0</output></p>
+    <p><label>d)  была бы сопряжена с определенным объемом рутинных операций. <input type="range" min="0" max="11" value="0" name="d4" class="slider" oninput="d4r.value=parseInt(d4.value)"/></label><output name="d4r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 5 -->
+  <div class="tab">
+    <h3>Работа мне нравится, если…</h3>
+    <p><label>а) я четко представляю себе, что от меня требуется;<input type="range" min="0" max="11" value="0" name="a5" class="slider" oninput="a5r.value=parseInt(a5.value)"/></label> <output name="a5r">0</output></p>
+    <p><label>b) у меня удобное рабочее место и меня мало отвлекают; <input type="range" min="0" max="11" value="0" name="b5" class="slider" oninput="b5r.value=parseInt(b5.value)"/></label> <output name="b5r">0</output></p>
+    <p><label>c)  у меня хорошие вознаграждения и заработная плата;<input type="range" min="0" max="11" value="0" name="c5" class="slider"oninput="c5r.value=parseInt(c5.value)"/></label><output name="c5r">0</output></p>
+    <p><label>d)  позволяет мне совершенствовать свои профессиональные качества. <input type="range" min="0" max="11" value="0" name="d5" class="slider" oninput="d5r.value=parseInt(d5.value)"/></label><output name="d5r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 6 -->
+  <div class="tab">
+    <h3>Полагаю, что мне бы понравилось, если…</h3>
+    <p><label>а) были бы хорошие условия работы, и отсутствовало бы давление на меня;<input type="range" min="0" max="11" value="0" name="a6" class="slider" oninput="a6r.value=parseInt(a6.value)"/></label> <output name="a6r">0</output></p>
+    <p><label>b) у меня был бы очень хороший оклад; <input type="range" min="0" max="11" value="0" name="b6" class="slider" oninput="b6r.value=parseInt(b6.value)"/></label> <output name="b6r">0</output></p>
+    <p><label>c) работа в действительности была бы полезная и приносила мне удовольствие;<input type="range" min="0" max="11" value="0" name="c6" class="slider"oninput="c6r.value=parseInt(c6.value)"/></label><output name="c6r">0</output></p>
+    <p><label>d)  мои достижения и работа оценивались бы по достоинству. <input type="range" min="0" max="11" value="0" name="d6" class="slider" oninput="d6r.value=parseInt(d6.value)"/></label><output name="d6r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 7 -->
+  <div class="tab">
+    <h3>Я не считаю, что работа должна…</h3>
+    <p><label>а) быть слабо структурированной, так что непонятно, что же следует делать;<input type="range" min="0" max="11" value="0" name="a7" class="slider" oninput="a7r.value=parseInt(a7.value)"/></label> <output name="a7r">0</output></p>
+    <p><label>b) предоставлять слишком мало возможностей хорошо узнать других людей; <input type="range" min="0" max="11" value="0" name="b7" class="slider" oninput="b7r.value=parseInt(b7.value)"/></label> <output name="b7r">0</output></p>
+    <p><label>c) быть малозначимой и малополезной для общества или неинтересной для выполнения;<input type="range" min="0" max="11" value="0" name="c7" class="slider"oninput="c7r.value=parseInt(c7.value)"/></label><output name="c7r">0</output></p>
+    <p><label>d)  оставаться непризнанной или ее выполнение должно восприниматься как само собой разумеющееся. <input type="range" min="0" max="11" value="0" name="d7" class="slider" oninput="d7r.value=parseInt(d7.value)"/></label><output name="d7r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 8 -->
+  <div class="tab">
+    <h3>Работа, приносящая удовлетворение…</h3>
+    <p><label>а) связана со значительным разнообразием, переменами и стимуляцией энтузиазма;<input type="range" min="0" max="11" value="0" name="a8" class="slider" oninput="a8r.value=parseInt(a8.value)"/></label> <output name="a8r">0</output></p>
+    <p><label>b) дает возможность совершенствовать свои профессиональные качества и развиваться как личность; <input type="range" min="0" max="11" value="0" name="b8" class="slider" oninput="b8r.value=parseInt(b8.value)"/></label> <output name="b8r">0</output></p>
+    <p><label>c) является полезной и значимой для общества;<input type="range" min="0" max="11" value="0" name="c8" class="slider"oninput="c8r.value=parseInt(c8.value)"/></label><output name="c8r">0</output></p>
+    <p><label>d)  позволяет мне быть креативным (проявлять творческий подход) и экспериментировать с новыми идеями.<input type="range" min="0" max="11" value="0" name="d8" class="slider" oninput="d8r.value=parseInt(d8.value)"/></label><output name="d8r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 9 -->
+  <div class="tab">
+    <h3>Важно, чтобы работа…</h3>
+    <p><label>а) признавалась и ценилась организацией, в которой я работаю;<input type="range" min="0" max="11" value="0" name="a9" class="slider" oninput="a9r.value=parseInt(a9.value)"/></label> <output name="a9r">0</output></p>
+    <p><label>b) давала бы возможности для персонального роста и совершенствования; <input type="range" min="0" max="11" value="0" name="b9" class="slider" oninput="b9r.value=parseInt(b9.value)"/></label> <output name="b9r">0</output></p>
+    <p><label>c) была сопряжена с большим разнообразием и переменами;<input type="range" min="0" max="11" value="0" name="c9" class="slider"oninput="c9r.value=parseInt(c9.value)"/></label><output name="c9r">0</output></p>
+    <p><label>d)  позволяла бы работнику оказывать влияние на других.<input type="range" min="0" max="11" value="0" name="d9" class="slider" oninput="d9r.value=parseInt(d9.value)"/></label><output name="d9r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 10 -->
+  <div class="tab">
+    <h3>Я не считаю, что работа будет приносить удовлетворение, если…</h3>
+    <p><label>а) в процессе ее выполнения мало возможностей осуществлять контакты с разными людьми;<input type="range" min="0" max="11" value="0" name="a10" class="slider" oninput="a10r.value=parseInt(a10.value)"/></label> <output name="a10r">0</output></p>
+    <p><label>b) оклад и вознаграждение не очень хорошие;<input type="range" min="0" max="11" value="0" name="b10" class="slider" oninput="b10r.value=parseInt(b10.value)"/></label> <output name="b10r">0</output></p>
+    <p><label>c)  не могу устанавливать и поддерживать добрые отношения с коллегами по работе;<input type="range" min="0" max="11" value="0" name="c10" class="slider"oninput="c10r.value=parseInt(c10.value)"/></label><output name="c10r">0</output></p>
+    <p><label>d)  у меня очень мало самостоятельности или возможностей для проявления гибкости.<input type="range" min="0" max="11" value="0" name="d10" class="slider" oninput="d10r.value=parseInt(d10.value)"/></label><output name="d10r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 11 -->
+  <div class="tab">
+    <h3>Самой хорошей является такая работа, которая…</h3>
+    <p><label>а) обеспечивает хорошие рабочие условия;<input type="range" min="0" max="11" value="0" name="a11" class="slider" oninput="a11r.value=parseInt(a11.value)"/></label> <output name="a11r">0</output></p>
+    <p><label>b) дает четкие инструкции и разъяснения по поводу содержания работы;<input type="range" min="0" max="11" value="0" name="b11" class="slider" oninput="b11r.value=parseInt(b11.value)"/></label> <output name="b11r">0</output></p>
+    <p><label>c)  предполагает выполнение интересных и полезных заданий;<input type="range" min="0" max="11" value="0" name="c11" class="slider"oninput="c11r.value=parseInt(c11.value)"/></label><output name="c11r">0</output></p>
+    <p><label>d)  позволяет получить признание личных достижений и качества работы.<input type="range" min="0" max="11" value="0" name="d11" class="slider" oninput="d11r.value=parseInt(d11.value)"/></label><output name="d11r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 12 -->
+  <div class="tab">
+    <h3>Вероятно, я не буду хорошо работать, если…</h3>
+    <p><label>а) имеется мало возможностей ставить перед собой цели и достигать их;<input type="range" min="0" max="11" value="0" name="a12" class="slider" oninput="a12r.value=parseInt(a12.value)"/></label> <output name="a12r">0</output></p>
+    <p><label>b) я не имею возможности совершенствовать свои личные качества;<input type="range" min="0" max="11" value="0" name="b12" class="slider" oninput="b12r.value=parseInt(b12.value)"/></label> <output name="b12r">0</output></p>
+    <p><label>c)  тяжелая работа не получает признания и соответствующего вознаграждения;<input type="range" min="0" max="11" value="0" name="c12" class="slider"oninput="c12r.value=parseInt(c12.value)"/></label><output name="c12r">0</output></p>
+    <p><label>d)  на рабочем месте пыльно, грязно или шумно.<input type="range" min="0" max="11" value="0" name="d12" class="slider" oninput="d12r.value=parseInt(d12.value)"/></label><output name="d12r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 13 -->
+  <div class="tab">
+    <h3>При определении служебных обязанностей важно…</h3>
+    <p><label>а) дать людям возможность лучше узнать друг друга;<input type="range" min="0" max="11" value="0" name="a13" class="slider" oninput="a13r.value=parseInt(a13.value)"/></label> <output name="a13r">0</output></p>
+    <p><label>b) предоставить работнику возможность ставить цели и достигать их;<input type="range" min="0" max="11" value="0" name="b13" class="slider" oninput="b13r.value=parseInt(b13.value)"/></label> <output name="b13r">0</output></p>
+    <p><label>c)  обеспечить условия для проявления работниками творческого начала;<input type="range" min="0" max="11" value="0" name="c13" class="slider"oninput="c13r.value=parseInt(c13.value)"/></label><output name="c13r">0</output></p>
+    <p><label>d) обеспечить комфортность и чистоту места работы.<input type="range" min="0" max="11" value="0" name="d13" class="slider" oninput="d13r.value=parseInt(d13.value)"/></label><output name="d13r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 14 -->
+  <div class="tab">
+    <h3>Вероятно, я не захочу работать там, где…</h3>
+    <p><label>а) у меня будет мало самостоятельности и возможностей для совершенствования своей личности;<input type="range" min="0" max="11" value="0" name="a14" class="slider" oninput="a14r.value=parseInt(a14.value)"/></label> <output name="a14r">0</output></p>
+    <p><label>b) не поощряются исследования и проявления научного любопытства;<input type="range" min="0" max="11" value="0" name="b14" class="slider" oninput="b14r.value=parseInt(b14.value)"/></label> <output name="b14r">0</output></p>
+    <p><label>c)  очень мало контактов с широким кругом людей;<input type="range" min="0" max="11" value="0" name="c14" class="slider"oninput="c14r.value=parseInt(c14.value)"/></label><output name="c14r">0</output></p>
+    <p><label>d) отсутствуют достойные надбавки и дополнительные льготы.<input type="range" min="0" max="11" value="0" name="d14" class="slider" oninput="d14r.value=parseInt(d14.value)"/></label><output name="d14r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 15 -->
+  <div class="tab">
+    <h3>Я был бы удовлетворен, если…</h3>
+    <p><label>а) была бы возможность оказывать влияние на принятие решений другими работниками;<input type="range" min="0" max="11" value="0" name="a15" class="slider" oninput="a15r.value=parseInt(a15.value)"/></label> <output name="a15r">0</output></p>
+    <p><label>b) работа предоставляла бы широкое разнообразие и перемены;<input type="range" min="0" max="11" value="0" name="b15" class="slider" oninput="b15r.value=parseInt(b15.value)"/></label> <output name="b15r">0</output></p>
+    <p><label>c)  мои достижения были бы оценены другими людьми;<input type="range" min="0" max="11" value="0" name="c15" class="slider"oninput="c15r.value=parseInt(c15.value)"/></label><output name="c15r">0</output></p>
+    <p><label>d) я точно знал бы, что от меня требуется и как я должен это выполнять.<input type="range" min="0" max="11" value="0" name="d15" class="slider" oninput="d15r.value=parseInt(d15.value)"/></label><output name="d15r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 16 -->
+  <div class="tab">
+    <h3>Работа меньше удовлетворяла бы меня, если…</h3>
+    <p><label>а) не позволяла бы ставить и добиваться сложных целей;<input type="range" min="0" max="11" value="0" name="a16" class="slider" oninput="a16r.value=parseInt(a16.value)"/></label> <output name="a16r">0</output></p>
+    <p><label>b) четко не знал бы правил и процедур выполнения работы;<input type="range" min="0" max="11" value="0" name="b16" class="slider" oninput="b16r.value=parseInt(b16.value)"/></label> <output name="b16r">0</output></p>
+    <p><label>c) уровень оплаты моего труда не соответствовал бы уровню сложности выполняемой работы;<input type="range" min="0" max="11" value="0" name="c16" class="slider"oninput="c16r.value=parseInt(c16.value)"/></label><output name="c16r">0</output></p>
+    <p><label>d) я практически не мог бы влиять на принимаемые решения и на то, что делают другие.<input type="range" min="0" max="11" value="0" name="d16" class="slider" oninput="d16r.value=parseInt(d16.value)"/></label><output name="d16r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 17 -->
+  <div class="tab">
+    <h3>Я полагаю, что должность должна предоставлять…</h3>
+    <p><label>а) четкие должностные инструкции и указания на то, что от меня требуется;<input type="range" min="0" max="11" value="0" name="a17" class="slider" oninput="a17r.value=parseInt(a17.value)"/></label> <output name="a17r">0</output></p>
+    <p><label>b) возможность лучше узнать своих коллег по работе;<input type="range" min="0" max="11" value="0" name="b17" class="slider" oninput="b17r.value=parseInt(b17.value)"/></label> <output name="b17r">0</output></p>
+    <p><label>c) возможности выполнять сложные производственные задания, требующие напряжения всех сил;<input type="range" min="0" max="11" value="0" name="c17" class="slider"oninput="c17r.value=parseInt(c17.value)"/></label><output name="c17r">0</output></p>
+    <p><label>d) разнообразие, перемены и поощрения.<input type="range" min="0" max="11" value="0" name="d17" class="slider" oninput="d17r.value=parseInt(d17.value)"/></label><output name="d17r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 18 -->
+  <div class="tab">
+    <h3>Работа приносила бы меньше удовлетворения, если…</h3>
+    <p><label>а) не допускала бы возможности хотя бы небольшого творческого вклада;<input type="range" min="0" max="11" value="0" name="a18" class="slider" oninput="a18r.value=parseInt(a18.value)"/></label> <output name="a18r">0</output></p>
+    <p><label>b) осуществлялась бы изолированно, т. е. я должен был бы работать в одиночестве;<input type="range" min="0" max="11" value="0" name="b18" class="slider" oninput="b18r.value=parseInt(b18.value)"/></label> <output name="b18r">0</output></p>
+    <p><label>c) отсутствовал бы благоприятный внутренний климат, в котором я мог бы профессионально расти;<input type="range" min="0" max="11" value="0" name="c18" class="slider"oninput="c18r.value=parseInt(c18.value)"/></label><output name="c18r">0</output></p>
+    <p><label>d) не давала бы возможности оказывать влияние на принятие решений.<input type="range" min="0" max="11" value="0" name="d18" class="slider" oninput="d18r.value=parseInt(d18.value)"/></label><output name="d18r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 19 -->
+  <div class="tab">
+    <h3>Я хотел бы работать там, где…</h3>
+    <p><label>а) другие люди признают и ценят выполняемую мной работу;<input type="range" min="0" max="11" value="0" name="a19" class="slider" oninput="a19r.value=parseInt(a19.value)"/></label> <output name="a19r">0</output></p>
+    <p><label>b) у меня будет возможность оказывать влияние на то, что делают другие;<input type="range" min="0" max="11" value="0" name="b19" class="slider" oninput="b19r.value=parseInt(b19.value)"/></label> <output name="b19r">0</output></p>
+    <p><label>c) имеется достойная система надбавок и дополнительных льгот;<input type="range" min="0" max="11" value="0" name="c19" class="slider"oninput="c19r.value=parseInt(c19.value)"/></label><output name="c19r">0</output></p>
+    <p><label>d) можно выдвигать и апробировать новые идеи и проявлять креативность.<input type="range" min="0" max="11" value="0" name="d19" class="slider" oninput="d19r.value=parseInt(d19.value)"/></label><output name="d19r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 20 -->
+  <div class="tab">
+    <h3>Вряд ли я захотел бы работать там, где…</h3>
+    <p><label>а) не существует разнообразия или перемен в работе;<input type="range" min="0" max="11" value="0" name="a20" class="slider" oninput="a20r.value=parseInt(a20.value)"/></label> <output name="a20r">0</output></p>
+    <p><label>b) у меня будет мало возможностей влиять на принимаемые решения;<input type="range" min="0" max="11" value="0" name="b20" class="slider" oninput="b20r.value=parseInt(b20.value)"/></label> <output name="b20r">0</output></p>
+    <p><label>c) заработная плата не слишком высока;<input type="range" min="0" max="11" value="0" name="c20" class="slider"oninput="c20r.value=parseInt(c20.value)"/></label><output name="c20r">0</output></p>
+    <p><label>d) условия работы недостаточно хорошие.<input type="range" min="0" max="11" value="0" name="d20" class="slider" oninput="d20r.value=parseInt(d20.value)"/></label><output name="d20r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 21 -->
+  <div class="tab">
+    <h3>Я полагаю, что приносящая удовлетворение работа должна предусматривать...</h3>
+    <p><label>а) наличие четких указаний, чтобы работники знали, что от них требуется;<input type="range" min="0" max="11" value="0" name="a21" class="slider" oninput="a21r.value=parseInt(a21.value)"/></label> <output name="a21r">0</output></p>
+    <p><label>b) возможность проявлять креативность (творческий подход);<input type="range" min="0" max="11" value="0" name="b21" class="slider" oninput="b21r.value=parseInt(b21.value)"/></label> <output name="b21r">0</output></p>
+    <p><label>c) возможность встречаться с интересными людьми;<input type="range" min="0" max="11" value="0" name="c21" class="slider"oninput="c21r.value=parseInt(c21.value)"/></label><output name="c21r">0</output></p>
+    <p><label>d) чувство удовлетворения и действительно интересные задания.<input type="range" min="0" max="11" value="0" name="d21" class="slider" oninput="d21r.value=parseInt(d21.value)"/></label><output name="d21r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 22 -->
+  <div class="tab">
+    <h3>Работа не будет доставлять удовольствие, если…</h3>
+    <p><label>а) предусмотрены незначительные надбавки и дополнительные льготы;<input type="range" min="0" max="11" value="0" name="a22" class="slider" oninput="a22r.value=parseInt(a22.value)"/></label> <output name="a22r">0</output></p>
+    <p><label>b) условия работы некомфортны или в помещении очень шумно;<input type="range" min="0" max="11" value="0" name="b22" class="slider" oninput="b22r.value=parseInt(b22.value)"/></label> <output name="b22r">0</output></p>
+    <p><label>c) не будет возможности сравнивать свою работу с работой других;<input type="range" min="0" max="11" value="0" name="c22" class="slider"oninput="c22r.value=parseInt(c22.value)"/></label><output name="c22r">0</output></p>
+    <p><label>d) не поощряются исследования, творческий подход и новые идеи.<input type="range" min="0" max="11" value="0" name="d22" class="slider" oninput="d22r.value=parseInt(d22.value)"/></label><output name="d22r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 23 -->
+  <div class="tab">
+    <h3>Я считаю важным, чтобы работа обеспечивала мне…</h3>
+    <p><label>а) множество контактов с широким кругом интересных мне людей;<input type="range" min="0" max="11" value="0" name="a23" class="slider" oninput="a23r.value=parseInt(a23.value)"/></label> <output name="a23r">0</output></p>
+    <p><label>b) возможность установления и достижения целей;<input type="range" min="0" max="11" value="0" name="b23" class="slider" oninput="b23r.value=parseInt(b23.value)"/></label> <output name="b23r">0</output></p>
+    <p><label>c) возможность влиять на принятие решений;<input type="range" min="0" max="11" value="0" name="c23" class="slider"oninput="c23r.value=parseInt(c23.value)"/></label><output name="c23r">0</output></p>
+    <p><label>d) высокий уровень заработной платы.<input type="range" min="0" max="11" value="0" name="d23" class="slider" oninput="d23r.value=parseInt(d23.value)"/></label><output name="d23r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 24 -->
+  <div class="tab">
+    <h3>Я не думаю, что мне нравилась бы работа, если…</h3>
+    <p><label>а) условия работы некомфортны, на рабочем месте грязно или шумно;<input type="range" min="0" max="11" value="0" name="a24" class="slider" oninput="a24r.value=parseInt(a24.value)"/></label> <output name="a24r">0</output></p>
+    <p><label>b) мало шансов влиять на других людей;<input type="range" min="0" max="11" value="0" name="b24" class="slider" oninput="b24r.value=parseInt(b24.value)"/></label> <output name="b24r">0</output></p>
+    <p><label>c) мало возможностей для достижения поставленных целей;<input type="range" min="0" max="11" value="0" name="c24" class="slider"oninput="c24r.value=parseInt(c24.value)"/></label><output name="c24r">0</output></p>
+    <p><label>d) я не мог бы проявлять креативность (творчество) и предлагать новые идеи.<input type="range" min="0" max="11" value="0" name="d24" class="slider" oninput="d24r.value=parseInt(d24.value)"/></label><output name="d24r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 25 -->
+  <div class="tab">
+    <h3>В процессе организации работы важно…</h3>
+    <p><label>а) обеспечить чистоту и комфортность рабочего места;<input type="range" min="0" max="11" value="0" name="a25" class="slider" oninput="a25r.value=parseInt(a25.value)"/></label> <output name="a25r">0</output></p>
+    <p><label>b) создать условия для проявления самостоятельности;<input type="range" min="0" max="11" value="0" name="b25" class="slider" oninput="b25r.value=parseInt(b25.value)"/></label> <output name="b25r">0</output></p>
+    <p><label>c) предусмотреть возможность разнообразия и перемен;<input type="range" min="0" max="11" value="0" name="c25" class="slider"oninput="c25r.value=parseInt(c25.value)"/></label><output name="c25r">0</output></p>
+    <p><label>d) обеспечить широкие возможности контактов с другими людьми.<input type="range" min="0" max="11" value="0" name="d25" class="slider" oninput="d25r.value=parseInt(d25.value)"/></label><output name="d25r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 26 -->
+  <div class="tab">
+    <h3>Скорее всего, я не захотел бы работать там, где…</h3>
+    <p><label>а) условия работы некомфортны, т. е. шумно, грязно и т. д.;<input type="range" min="0" max="11" value="0" name="a26" class="slider" oninput="a26r.value=parseInt(a26.value)"/></label> <output name="a26r">0</output></p>
+    <p><label>b) мало возможностей осуществлять контакты с другими людьми;<input type="range" min="0" max="11" value="0" name="b26" class="slider" oninput="b26r.value=parseInt(b26.value)"/></label> <output name="b26r">0</output></p>
+    <p><label>c) работа не является интересной или полезной;<input type="range" min="0" max="11" value="0" name="c26" class="slider"oninput="c26r.value=parseInt(c26.value)"/></label><output name="c26r">0</output></p>
+    <p><label>d) работа рутинная и задания редко меняются.<input type="range" min="0" max="11" value="0" name="d26" class="slider" oninput="d26r.value=parseInt(d26.value)"/></label><output name="d26r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 27 -->
+  <div class="tab">
+    <h3>Работа приносит удовлетворение, вероятно, когда…</h3>
+    <p><label>а) люди признают и ценят хорошо выполненную работу;<input type="range" min="0" max="11" value="0" name="a27" class="slider" oninput="a27r.value=parseInt(a27.value)"/></label> <output name="a27r">0</output></p>
+    <p><label>b) существуют широкие возможности для маневра и проявления гибкости;<input type="range" min="0" max="11" value="0" name="b27" class="slider" oninput="b27r.value=parseInt(b27.value)"/></label> <output name="b27r">0</output></p>
+    <p><label>c) можно ставить перед собой сложные и смелые цели;<input type="range" min="0" max="11" value="0" name="c27" class="slider"oninput="c27r.value=parseInt(c27.value)"/></label><output name="c27r">0</output></p>
+    <p><label>d) существует возможность лучше узнать своих коллег.<input type="range" min="0" max="11" value="0" name="d27" class="slider" oninput="d27r.value=parseInt(d27.value)"/></label><output name="d27r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 28 -->
+  <div class="tab">
+    <h3>Мне бы не понравилась работа, которая…</h3>
+    <p><label>а) не была бы полезной и не приносила бы чувства удовлетворения;<input type="range" min="0" max="11" value="0" name="a28" class="slider" oninput="a28r.value=parseInt(a28.value)"/></label> <output name="a28r">0</output></p>
+    <p><label>b) не содержала бы в себе стимула к переменам;<input type="range" min="0" max="11" value="0" name="b28" class="slider" oninput="b28r.value=parseInt(b28.value)"/></label> <output name="b28r">0</output></p>
+    <p><label>c) не позволяла бы мне устанавливать дружеские отношения с другими;<input type="range" min="0" max="11" value="0" name="c28" class="slider"oninput="c28r.value=parseInt(c28.value)"/></label><output name="c28r">0</output></p>
+    <p><label>d) была бы неконкретной и не ставила бы сложных задач.<input type="range" min="0" max="11" value="0" name="d28" class="slider" oninput="d28r.value=parseInt(d28.value)"/></label><output name="d28r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 29 -->
+  <div class="tab">
+    <h3>Я бы проявил стремление работать там, где…</h3>
+    <p><label>а) работа интересная и полезная;<input type="range" min="0" max="11" value="0" name="a29" class="slider" oninput="a29r.value=parseInt(a29.value)"/></label> <output name="a29r">0</output></p>
+    <p><label>b) люди могут устанавливать длительные дружеские взаимоотношения;<input type="range" min="0" max="11" value="0" name="b29" class="slider" oninput="b29r.value=parseInt(b29.value)"/></label> <output name="b29r">0</output></p>
+    <p><label>c) меня окружали бы интересные люди;<input type="range" min="0" max="11" value="0" name="c29" class="slider"oninput="c29r.value=parseInt(c29.value)"/></label><output name="c29r">0</output></p>
+    <p><label>d) я мог бы оказывать влияние на принятие решений.<input type="range" min="0" max="11" value="0" name="d29" class="slider" oninput="d29r.value=parseInt(d29.value)"/></label><output name="d29r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 30 -->
+  <div class="tab">
+    <h3>Я не считаю, что работа должна…</h3>
+    <p><label>а) предусматривать, чтобы человек большую часть времени работал в одиночку;<input type="range" min="0" max="11" value="0" name="a30" class="slider" oninput="a30r.value=parseInt(a30.value)"/></label> <output name="a30r">0</output></p>
+    <p><label>b) давать мало шансов на признание личных достижений работника;<input type="range" min="0" max="11" value="0" name="b30" class="slider" oninput="b30r.value=parseInt(b30.value)"/></label> <output name="b30r">0</output></p>
+    <p><label>c) препятствовать установлению взаимоотношений с коллегами;<input type="range" min="0" max="11" value="0" name="c30" class="slider"oninput="c30r.value=parseInt(c30.value)"/></label><output name="c30r">0</output></p>
+    <p><label>d) состоять в основном из рутинных обязанностей.<input type="range" min="0" max="11" value="0" name="d30" class="slider" oninput="d30r.value=parseInt(d30.value)"/></label><output name="d30r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 31 -->
+  <div class="tab">
+    <h3>Хорошо спланированная работа обязательно…</h3>
+    <p><label>а) предусматривает достаточный набор льгот и множество надбавок;<input type="range" min="0" max="11" value="0" name="a31" class="slider" oninput="a31r.value=parseInt(a31.value)"/></label> <output name="a31r">0</output></p>
+    <p><label>b) имеет четкие рекомендации по выполнению и должностные обязанности;<input type="range" min="0" max="11" value="0" name="b31" class="slider" oninput="b31r.value=parseInt(b31.value)"/></label> <output name="b31r">0</output></p>
+    <p><label>c) предусматривает возможность ставить цели и достигать их;<input type="range" min="0" max="11" value="0" name="c31" class="slider"oninput="c31r.value=parseInt(c31.value)"/></label><output name="c31r">0</output></p>
+    <p><label>d) стимулирует и поощряет выдвижение новых идей.<input type="range" min="0" max="11" value="0" name="d31" class="slider" oninput="d31r.value=parseInt(d31.value)"/></label><output name="d31r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 32 -->
+  <div class="tab">
+    <h3>Я считал бы, что работа не приносит удовлетворения, если…</h3>
+    <p><label>а) не мог бы выполнять сложную перспективную работу;<input type="range" min="0" max="11" value="0" name="a32" class="slider" oninput="a32r.value=parseInt(a32.value)"/></label> <output name="a32r">0</output></p>
+    <p><label>b) было бы мало возможностей для проявления креативности;<input type="range" min="0" max="11" value="0" name="b32" class="slider" oninput="b32r.value=parseInt(b32.value)"/></label> <output name="b32r">0</output></p>
+    <p><label>c) допускалась бы лишь малая доля самостоятельности;<input type="range" min="0" max="11" value="0" name="c32" class="slider"oninput="c32r.value=parseInt(c32.value)"/></label><output name="c32r">0</output></p>
+    <p><label>d) сама суть работы не представлялась бы полезной или нужной.<input type="range" min="0" max="11" value="0" name="d32" class="slider" oninput="d32r.value=parseInt(d32.value)"/></label><output name="d32r">0</output></p>
+    <p><div class="summa"></div></p>
+  </div>
+<!-- Вопрос 33 -->
+  <div class="tab">
+    <h3>Наиболее важными характеристиками должности являются…</h3>
+    <p><label>а) возможность для творческого подхода и оригинального нестандартного мышления;<input type="range" min="0" max="11" value="0" name="a33" class="slider" oninput="a33r.value=parseInt(a33.value)"/></label> <output name="a33r">0</output></p>
+    <p><label>b) важные обязанности, выполнение которых приносит удовлетворение;<input type="range" min="0" max="11" value="0" name="b33" class="slider" oninput="b33r.value=parseInt(b33.value)"/></label> <output name="b33r">0</output></p>
+    <p><label>c) возможность устанавливать хорошие взаимоотношения с коллегами;<input type="range" min="0" max="11" value="0" name="c33" class="slider"oninput="c33r.value=parseInt(c33.value)"/></label><output name="c33r">0</output></p>
+    <p><label>d) наличие значимых целей, которых призван достичь работник.<input type="range" min="0" max="11" value="0" name="d33" class="slider" oninput="d33r.value=parseInt(d33.value)"/></label><output name="d33r">0</output></p>
+    <p><div class="summa"></div></p>
+    <div class="g-form__button-wrapper">
+      <button class="g-form__button" onclick="nextPrev(1);" style="float:right;">Завершить тест</button>  
+    </div>
+  </div>
+  <!-- Конец -->
+  <div class="tab">
+    <div class="successform" style="color:#149b9e;"></div>
+    <p>Спасибо, что уделили время нашему тесту, ожидайте результатов!</p>
+   
+  
+  </div>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Предыдущий вопрос</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)" class="g-form__button" >Next</button>
+     
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  
+</form>
+</section>
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the crurrent tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";}
+  else if (n >= (x.length - 1)) {document.getElementById("prevBtn").style.display = "none";}
+   else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n >= (x.length - 2)) {
+    document.getElementById("nextBtn").style.display = "none";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Следующий вопрос";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm() ) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, s, valid = true;
+  var sum = 0;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  z = x[currentTab].getElementsByTagName("select");
+  // A loop that checks every input field in the current tab:
+      
+        for (i = 0; i < y.length; i++) {
+        if (y[i].type == "range"){
+          valid = true;
+        sum = sum + Number(y[i].value);
+        if (sum < 11) {
+          s = 11 - sum;
+          x[currentTab].querySelector(".summa").innerHTML = "Нужно распределить еще " + s + " балла(ов)";
+          valid = false;
+        }
+        if (sum > 11) {
+          s = sum - 11;
+          x[currentTab].querySelector(".summa").innerHTML = "Нужно убрать " + s + " балла(ов)";
+          valid = false;
+        }
+
+        }
+        else {
+          if (y[i].value == "") {
+        // add an "invalid" class to the field:
+        y[i].className += " invalid";
+        // and set the current valid status to false
+        valid = false;
+      }
+      }
+  }
+
+
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab+1].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+function successform(n) {
+    var x, res;
+    x = document.getElementsByClassName("tab");
+    res = x[currentTab].querySelector(".successform").innerHTML = 'Данные успешно отправлены';
+  x[currentTab].style.display = "none";
+  currentTab = currentTab + n;
+  showTab(currentTab);
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $(function() {
+  $(".g-form").submit(function (event) {
+    event.preventDefault();
+ 
+    // Ссылка, которую получили на этапе публикации приложения
+    let appLink = "https://script.google.com/macros/s/AKfycbzTezaydCsoZpXajQP85jB5bRXI2bJUAJlMxkETs1YGBcR3OcrH2xM-sAxjQ2X2RW9k/exec";
+ 
+    // Сообщение при ошибке в отправке данных
+    let errorRespond = 'Не удалось отправить сообщение. Cвяжитесь с администратором сайта по адресу <a href="mailto:smart-landing@ya.ru">smart-landing@ya.ru</a>';
+ 
+    // Id текущей формы
+    let form = $('#' + $(this).attr('id'))[0];
+ 
+    // h2 с ответом формы
+    let formRespond = $(this).find('.g-form__title_respond');
+ 
+    // Кнопка отправки формы
+    let submitButton = $(this).find('.g-form__button');
+ 
+ 
+    // FormData
+    let fd = new FormData(form);
+ 
+ 
+    $.ajax({
+ 
+      url: appLink,
+      type: "POST",
+      data: fd,
+      processData: false,
+      contentType: false,
+ 
+  }).done(function(res, textStatus, jqXHR) {
+ 
+    if(jqXHR.readyState === 4 && jqXHR.status === 200) {
+ 
+    // Прячем заголовок формы
+    formTitle.css({
+      'display': 'none'
+    });
+ 
+    // Выводим ответ формы.
+    formRespond.html(successRespond).css('color', '#37b599');
+     
+    // Возвращаем активность кнопке отправки
+    submitButton.prop('disabled', false);
+ 
+      // Очищаем поля формы
+      form.reset();
+ 
+    } else {
+      formTitle.css({
+        'display': 'none'
+      });
+      formRespond.html(errorRespond).css('color', '#c64b4b');
+      preloader.css('opacity', '0');
+      setTimeout( () => {
+        formRespond.css({
+          'display': 'none'
+        });
+        formTitle.css({
+          'display': 'block'
+        });
+ 
+        submitButton.prop('disabled', false);
+      }, 5000);
+ 
+      console.log('Гугл не ответил статусом 200');
+    }
+  }).fail(function(res, textStatus, jqXHR) {
+    formTitle.css({
+      'display': 'none'
+    });
+    preloader.css('opacity', '0');
+    formRespond.html('Не удалось отправить сообщение. Cвяжитесь с администратором сайта другим способом').css('color', '#c64b4b');
+    setTimeout( () => {
+      formRespond.css({
+        'display': 'none'
+      });
+      formTitle.css({
+        'display': 'block'
+      });
+      submitButton.prop('disabled', false); 
+    }, 5000);
+ 
+    console.log('Не удалось выполнить запрос по указанному в скрипте пути');
+  }); 
+});
+}(jQuery));
+</script>
+
+</body>
+</html>
