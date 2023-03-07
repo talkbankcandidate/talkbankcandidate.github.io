@@ -89,6 +89,9 @@ input {
 input[type=range]::after {
   content: "11";
 } */
+ #politics {
+  width: 20px;
+} 
 select {
   padding: 10px;
   width: 100%;
@@ -302,6 +305,9 @@ button {
     <h3>Расскажи о себе:</h3>
     <p><input placeholder="Введи ФИО" oninput="this.className = ''" name="Фио" type="text"></p>
 <p><input placeholder="Введи должность на которую претендуешь" oninput="this.className = ''" name="Должность" type="text"></p>
+    <p><a href="https://www.business.talkbank.io/policy" style="color:#149b9e">Положение об обработке персональных данных</a></p>
+    <input type="checkbox" id="politics" name="politics">
+      <label for="politics">С положением об обработке персональных данных ознаколмлен(-а)</label>
   </div>
 <!-- Вопрос 1 -->
 <div class="tab">
@@ -670,7 +676,6 @@ function validateForm() {
   var sum = 0;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
-  z = x[currentTab].getElementsByTagName("select");
   // A loop that checks every input field in the current tab:
       
         for (i = 0; i < y.length; i++) {
@@ -689,7 +694,15 @@ function validateForm() {
         }
 
         }
+        else if(y[i].type == "checkbox"){
+        if (y[i].checked){
+          valid = true;
+        }
         else {
+          valid = false;
+        }
+        }
+        else{
           if (y[i].value == "") {
         // add an "invalid" class to the field:
         y[i].className += " invalid";
@@ -706,7 +719,6 @@ function validateForm() {
   }
   return valid; // return the valid status
 }
-
 
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
